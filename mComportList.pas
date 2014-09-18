@@ -14,6 +14,10 @@ type
 
 implementation
 
+uses
+  System.Win.Registry
+  ;
+
 { TComPortList }
 
 procedure TComPortList.Search;
