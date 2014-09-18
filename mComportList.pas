@@ -6,6 +6,7 @@ uses
   Classes, SysUtils, Windows, System.Generics.Collections;
 
 type
+  EComportList = class(Exception);
   TComPortList = class(TStringList)
   private
   public
@@ -34,7 +35,7 @@ begin
     Reg.RootKey := HKEY_LOCAL_MACHINE;
     if not Reg.KeyExists(RegPath) then Exit;
     if not Reg.OpenKey(RegPath, False) then
-      raise Exception.Create('TSerialComDeviceList.find_SerialComDevice: RegKey OpenFailed ');
+      raise EComportList.Create('Search failed - Cannot open RegKey ');
 
     Reg.GetValueNames(SL);
     for i := 0 to SL.Count - 1 do
